@@ -1,0 +1,53 @@
+
+
+  <div class="row" *ngFor="let sub_array of info | keysGrid">
+    <div class="col-md-6" *ngFor="let item of sub_array">
+      <div class="form-group form-black label-floating">
+        <label class="control-label">{{item.key}}</label>
+        <input type="text" class="form-control" [(ngModel)]="item.value" [(value)]="item.value" [required]="item.mandatory" >
+        <i class="material-icons" style="cursor: pointer;" (click)="delete(item)" mdTooltip="حذف" *ngIf="!item.mandatory">delete</i>
+        <i class="material-icons" style="cursor: pointer;" mdTooltip="سند">description</i>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="card" style="background-color: rgba(253, 255, 93, 0.65)">
+
+      <div class="col-md-2">
+        <div class="form-group form-black label-floating is-empty">
+          <label class="control-label">کلید جدید</label>
+          <input type="text" class="form-control" [(ngModel)]="newKey">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <div class="form-group form-black label-floating is-empty">
+            <label class="control-label" > مقدار جدید</label>
+            <textarea class="form-control" rows="1" [(ngModel)]="newValue"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+
+          <button type="submit" class="btn btn-danger btn-round btn-just-icon" style="margin-right: 10px;" (click)="add()">
+            <i class="large material-icons" style="font-weight: bold">add</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-danger pull-right" (click)="save()">ثبت تغییرات</button>
+  <div class="clearfix"></div>
+
+
+
+
+
+

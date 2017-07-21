@@ -1,0 +1,34 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">مشخصات</h4>
+            <p class="category">اطلاعات فرد مورد نظر</p>
+          </div>
+          <div class="card-content">
+
+            <app-info-form [info_type]="'soldier'"></app-info-form>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">بارگذاری اسناد</h4>
+            <p class="category">اسناد جدید را به پروفایل شخص انتخاب شده اضافه نمایید</p>
+          </div>
+          <div class="card-content">
+            <app-uploader></app-uploader>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
