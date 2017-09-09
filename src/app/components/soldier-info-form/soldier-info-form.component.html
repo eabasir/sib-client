@@ -1,0 +1,244 @@
+<div class="row">
+  <div class="card" style="background-color: rgba(254, 255, 168, 0.65)">
+
+    <div class="col-md-6" *ngFor="let item of info | cats : _categoty.Personal">
+
+      <div [ngSwitch]="item.key">
+
+        <div *ngSwitchCase="_names.education" class="form-group">
+          <md-select [(ngModel)]="item.value" placeholder="{{item.key}}" class="md-no-underline" style="width: 100%">
+            <md-option [value]="_names.phd">{{_names.phd}}</md-option>
+            <md-option [value]="_names.Msc">{{_names.Msc}}</md-option>
+            <md-option [value]="_names.Bsc">{{_names.Bsc}}</md-option>
+            <md-option [value]="_names.above_diploma">{{_names.above_diploma}}</md-option>
+            <md-option [value]="_names.diploma">{{_names.diploma}}</md-option>
+            <md-option [value]="_names.under_diploma">{{_names.under_diploma}}</md-option>
+          </md-select>
+          <br/>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+        <div *ngSwitchCase="_names.marriage_status" class="form-group">
+          <md-select [(ngModel)]="item.value" placeholder="{{item.key}}" class="md-no-underline" style="width: 100%">
+            <md-option [value]="_names.marriage_status_single">{{_names.marriage_status_single}}</md-option>
+            <md-option [value]="_names.marriage_status_married">{{_names.marriage_status_married}}</md-option>
+          </md-select>
+          <br/>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+
+        <div *ngSwitchCase="_names.education_major" class="form-group form-black label-floating">
+          <app-general-auto-complete [input_name]="_names.education_major" [input_value]="item.value"
+                                     (output_item)="item.value = $event;"></app-general-auto-complete>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+        <div *ngSwitchCase="_names.university" class="form-group form-black label-floating">
+          <app-general-auto-complete [input_name]="_names.university" [input_value]="item.value"
+                                     (output_item)="item.value = $event;"></app-general-auto-complete>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+        <!--<div *ngSwitchCase="_names.dob" class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [(ngModel)]="item.value" [dpDayPicker]="config"
+                 theme="dp-material"/>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>-->
+        <div *ngSwitchCase="_names.dob" class="form-group">
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px; color: #737373">{{item.key}}</span>
+            <br /><br />
+            <app-date [input_date]="item.value" (output_date)="item.value = $event" ></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+        <div *ngSwitchCase="_names.address" class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="item.value"></textarea>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+        <div *ngSwitchDefault class="form-group form-black label-floating" [ngClass]="{'has-error' : item.mandatory}">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [(ngModel)]="item.value" type="text" [required]="item.mandatory">
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card" style="background-color: rgba(254, 255, 168, 0.65)">
+
+    <div class="col-md-6" *ngFor="let item of info | cats : _categoty.Service">
+      <div [ngSwitch]="item.key">
+
+        <div *ngSwitchCase="_names.dispatch_date" class="form-group form-black label-floating has-error">
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px; color: #f44336 ">{{item.key}}</span>
+            <br /><br />
+            <app-date [input_date]="item.value" (output_date)="item.value = $event; updateDischargeDate()"></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+        <div *ngSwitchCase="_names.legal_discharge_date" class="form-group form-black label-floating">
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px; color: #737373">{{item.key}}</span>
+            <br /><br />
+            <app-date [input_date]="item.value" (output_date)="item.value = $event"></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+
+        </div>
+
+        <div *ngSwitchCase="_names.real_discharge_date" class="form-group form-black label-floating">
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px; color: #737373">{{item.key}}</span>
+            <br /><br />
+            <app-date [input_date]="item.value" (output_date)="item.value = $event"></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+
+        </div>
+
+
+        <div *ngSwitchCase="_names.serve_status" class="form-group">
+          <md-select [(ngModel)]="item.value" placeholder="{{item.key}}" class="md-no-underline required"
+                     style="width: 100%">
+            <md-option [value]="_names.serve_status_discharged">{{_names.serve_status_discharged}}</md-option>
+            <md-option [value]="_names.serve_status_in_serve">{{_names.serve_status_in_serve}}</md-option>
+
+          </md-select>
+          <br/>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+
+        <div *ngSwitchCase="_names.serve_place" class="form-group form-black label-floating">
+          <app-general-auto-complete [input_name]="_names.serve_place" [input_value]="item.value"
+                                     (output_item)="item.value = $event;"></app-general-auto-complete>
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+
+        <div *ngSwitchCase="_names.serve_reduction" class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [ngModel]="item.value ? item.value  : 0"
+                 (ngModelChange)="item.value = $event; updateDischargeDate()"
+                 type="number">
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+
+        <div *ngSwitchCase="_names.service_penalty" class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [ngModel]="item.value ? item.value  : 0"
+                 (ngModelChange)="item.value = $event;"
+                 type="number">
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+
+        </div>
+        <div *ngSwitchCase="_names.leave_incentive" class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [ngModel]="item.value ? item.value  : 0"
+                 (ngModelChange)="item.value = $event;"
+                 type="number">
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+
+        </div>
+
+        <div *ngSwitchDefault class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [ngModel]="item.value"
+                 (ngModelChange)="item.value = $event;"
+                 type="text">
+          <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+             (click)="showRelatedDocs(item)">description</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card" style="background-color: rgba(254, 255, 168, 0.65)">
+
+
+    <div class="col-md-6" *ngFor="let item of info | cats : _categoty.Other">
+      <div class="form-group form-black label-floating">
+        <label class="control-label">{{item.key}}</label>
+        <input class="form-control" [(ngModel)]="item.value"
+               type="text">
+
+        <i class="material-icons" style="cursor: pointer;" (click)="delete(item)" mdTooltip="حذف">delete</i>
+        <i class="material-icons" style="cursor: pointer;" mdTooltip="سند"
+           (click)="showRelatedDocs(item)">description</i>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="card" style="background-color: rgba(174, 222, 255, 0.65)">
+
+    <div class="col-md-3">
+      <div class="form-group form-black label-floating is-empty">
+        <label class="control-label">کلید جدید</label>
+        <input type="text" class="form-control" [(ngModel)]="newKey">
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="form-group">
+        <div class="form-group form-black label-floating is-empty">
+          <label class="control-label"> مقدار جدید</label>
+          <textarea class="form-control" rows="1" [(ngModel)]="newValue"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+
+        <button type="submit" class="btn btn-instagram btn-round btn-just-icon" style="margin-right: 10px;"
+                (click)="add()">
+          <i class="large material-icons" style="font-weight: bold">add</i>
+          <div class="ripple-container"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<button class="btn btn-success" (click)="save()" type="button">
+  <span class="fa fa-save"></span>ثبت تغییرات
+</button>
+
+<button *ngIf="input_id" class="btn btn-instagram pull-left" (click)="makePrint()" type="button">
+  <span class="fa fa-print"></span>پرینت خلاصه وضعیت
+</button>
+
+<div class="clearfix"></div>
+
+
+

@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar-routes.config';
+import {Component, OnInit} from '@angular/core';
+import {ROUTES} from '../sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {RestService} from "../../services/rest.service";
+import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/operator/map'
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -8,29 +12,39 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-    private listTitles: any[];
-    location: Location;
+  private listTitles: any[];
+  location: Location;
 
-    constructor(location: Location) {
-      this.location = location;
+
+  constructor(location: Location) {
+    this.location = location;
+  }
+
+  ngOnInit() {
+
+
+
+    this.listTitles = ROUTES.filter(listTitle => listTitle);
+
+
+
+
+  }
+
+  getTitle() {
+    var titlee = this.location.prepareExternalUrl(this.location.path());
+    if (titlee.charAt(0) === '#') {
+      titlee = titlee.slice(2);
     }
+    titlee = titlee.split('/').pop();
 
-    ngOnInit(){
-      this.listTitles = ROUTES.filter(listTitle => listTitle);
-    }
-
-    getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 2 );
+    for (var item = 0; item < this.listTitles.length; item++) {
+      if (this.listTitles[item].path === titlee) {
+        return this.listTitles[item].title;
       }
-      titlee = titlee.split('/').pop();
-
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
-      return 'Dashboard';
     }
+    return 'Dashboard';
+  }
+
+
 }

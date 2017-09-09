@@ -45,7 +45,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data');
+        expect(connection.request.url).toBe('/api/items');
         expect(connection.request.method).toBe(RequestMethod.Get);
         connection.mockRespond(
           new Response(
@@ -71,7 +71,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data?a=1&b=xyz'); //Tricky and unstable: we don't know how the URL parameters are ordered
+        expect(connection.request.url).toBe('/api/items?a=1&b=xyz'); //Tricky and unstable: we don't know how the URL parameters are ordered
         expect(connection.request.method).toBe(RequestMethod.Get);
         connection.mockRespond(
           new Response(
@@ -97,7 +97,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data');
+        expect(connection.request.url).toBe('/api/items');
         expect(connection.request.method).toBe(RequestMethod.Put);
         let body = connection.request.text();
         expect(JSON.parse(body).a).toBe(1);
@@ -123,7 +123,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data');
+        expect(connection.request.url).toBe('/api/items');
         let body = connection.request.text();
         expect(connection.request.method).toBe(RequestMethod.Put);
         expect(JSON.parse(body).a).toBe(1);
@@ -147,7 +147,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data/2');
+        expect(connection.request.url).toBe('/api/items/2');
         expect(connection.request.method).toBe(RequestMethod.Delete);
         connection.mockRespond(
           new Response(
@@ -169,7 +169,7 @@ describe('Service: REST', () => {
     mockBackend.connections.subscribe(
       (connection: MockConnection) => {
         // make sure the URL is correct
-        expect(connection.request.url).toBe('/api/data/3');
+        expect(connection.request.url).toBe('/api/items/3');
         expect(connection.request.method).toBe(RequestMethod.Post);
         let body = connection.request.text();
         expect(JSON.parse(body).a).toBe(1);

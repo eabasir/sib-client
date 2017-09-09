@@ -1,1 +1,26 @@
-<div id="map"></div>
+<div class="main-content" style="direction: ltr">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">اسناد</h4>
+            <p class="category">نمایش اسناد</p>
+          </div>
+          <div class="card-content">
+
+            <app-date (output_date)="update($event)"></app-date>
+
+            <br /><br />
+            <p>rec date: {{rec_date}}</p>
+            <p> gregorain date: {{gDate}}</p>
+            <p> jalali date: {{jDate}}</p>
+            <p> added jalali date: {{jAddedDate}}</p>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

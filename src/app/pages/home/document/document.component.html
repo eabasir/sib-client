@@ -1,0 +1,64 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">جستجوی مدارک افراد</h4>
+            <p class="category">جستجوی مدارک فرد مورد نظر</p>
+          </div>
+          <div class="card-content">
+
+            <app-personnel-auto-complete (output_item)="update($event)"></app-personnel-auto-complete>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">جستجوی مدارک</h4>
+            <p class="category">جستجو بر اساس اطلاعات ثبت شده در اسناد</p>
+          </div>
+          <div class="card-content">
+
+            <app-search-bundle [input_item]="personnel_item" (output_bundle)="search_bundle = $event"></app-search-bundle>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div class="card-header" data-background-color="purple">
+              <h4 class="title">اسناد</h4>
+              <p class="category">نمایش اسناد</p>
+            </div>
+            <div class="card-content">
+
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-content">
+                    <app-document-info-form [input_item]="document"></app-document-info-form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" style="direction: ltr">
+                <div class="card">
+                  <div class="card-content">
+                    <app-viewer [showInfo]="true" [personnel_id]="personnel_id" [search_bundle]="search_bundle"
+                                (output_item)="document = $event"></app-viewer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="row" *ngIf="field" style="direction: rtl">
+  <div class="col-md-12">
+
+    <p>نمایش اسناد برای: <b>{{field.key}}</b></p>
+  </div>
+
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <md-tab-group *ngIf="docs.length > 0">
+      <md-tab *ngFor="let document of docs ;let i = index">
+        <ng-template md-tab-label style="direction: ltr">
+          {{document.name}}
+        </ng-template>
+        <div class="row">
+          <div class="col-md-12">
+
+            <button *ngIf="showInfo" class="btn btn-success pull-left" (click)="viewInfo(document)" type="button" style="direction: rtl">
+              <span class="fa fa-info"></span> نمایش اطلاعات
+            </button>
+            <button class="btn btn-danger pull-left" (click)="delete(document)" type="button" style="direction: rtl">
+              <span  class="fa fa-trash"></span>حذف سند
+            </button>
+
+            <div class="checkbox pull-right" style="direction: ltr" >
+              <label>
+                <input *ngIf="field" type="checkbox" name="cbRelatedDoc" (change)="changeRelation($event , document)" [checked] ="document.isChecked">
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <iframe *ngIf="getType(document.base_path) === 'pdf'" [src]="document.path" style="width: 100%; height: 800px"
+                    allowfullscreen webkitallowfullscreen></iframe>
+            <img *ngIf="getType(document.base_path) === 'pic'" [src]="document.path" style="width: 100%"/>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </div>
+
+</div>
+
+<!--<div class="row" *ngIf="field" >
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-success pull-right" (click)="save()">ثبت تغییرات</button>
+  </div>
+</div>-->

@@ -1,0 +1,9 @@
+<label class="control-label">{{input_name}}</label>
+<input type="text" [(ngModel)] ="input_value" (ngModelChange)="emit($event)"  class="form-control" [mdAutocomplete]="auto" [formControl]="searchModelCtrl" #autoNameCode>
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let item of search_items"
+             [value]="item">
+    {{ item}}
+  </md-option>
+</md-autocomplete>
+

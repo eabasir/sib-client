@@ -1,0 +1,16 @@
+<md-select placeholder="روز" [(ngModel)]="selectedDay" (ngModelChange)="selectedDay= $event; emit()"
+           class="md-no-underline" style="width: 60px !important;">
+  <md-option *ngFor="let d of days" [value]="d">{{d}}</md-option>
+</md-select>
+
+
+<md-select placeholder="ماه" [(ngModel)]="selectedMonth" (ngModelChange)="selectedMonth= $event; emit()"
+           class="md-no-underline" style="width: 60px !important; margin-right: 10px;">
+  <md-option *ngFor="let m of months" [value]="m">{{m}}</md-option>
+</md-select>
+<md-select placeholder="سال" [(ngModel)]="selectedYear" (ngModelChange)="selectedYear= $event; emit()"
+           class="md-no-underline" style="width: 70px !important; margin-right: 10px;">
+  <md-option *ngFor="let y of years"   [value]="y">{{y}}</md-option>
+</md-select>
+
+

@@ -1,0 +1,58 @@
+<div class="main-content" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="green">
+            <h4 class="title">گزارش</h4>
+            <p class="category">جزئیات تفکیکی شرکت ها بر مبنای مدرک تحصیلی</p>
+          </div>
+          <div class="card-content table-responsive">
+            <table class="table table-hover">
+              <thead class="text-danger">
+              <tr>
+                <th><b>شرکت</b></th>
+                <th>{{_names.phd}}</th>
+                <th>{{_names.Msc}}</th>
+                <th>{{_names.Bsc}}</th>
+                <th>{{_names.above_diploma}}</th>
+                <th>{{_names.diploma}}</th>
+                <th>{{_names.under_diploma}}</th>
+                <th style="background-color: #ffe3cf"><b>کل</b></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let item of company_education; let i = index">
+                <td><b>{{item.name}}</b></td>
+                <td>{{item.value[_names.phd] }}</td>
+                <td>{{item.value[_names.Msc]}}</td>
+                <td>{{item.value[_names.Bsc]}}</td>
+                <td>{{item.value[_names.above_diploma]}}</td>
+                <td>{{item.value[_names.diploma]}}</td>
+                <td>{{item.value[_names.under_diploma]}}</td>
+                <td style="background-color: #ffe3cf"><b>{{getTotal(item.value)}}</b></td>
+              </tr>
+              <tr>
+                <td style="background-color: #ffe3cf"><b>جمع کل</b></td>
+                <td style="background-color: #ffe3cf"><b>{{phd_total}}</b></td>
+                <td style="background-color: #ffe3cf"><b>{{msc_total}}</b></td>
+                <td style="background-color: #ffe3cf"><b>{{bsc_total}}</b></td>
+                <td style="background-color: #ffe3cf"><b>{{above_diploma_total}}</b></td>
+                <td style="background-color: #ffe3cf"><b>{{diploma_total}}</b></td>
+                <td style="background-color: #ffe3cf"><b>{{under_diploma_total}}</b></td>
+                <td style="background-color: #fd9719"><b>{{total}}</b></td>
+              </tr>
+
+
+
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

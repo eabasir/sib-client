@@ -1,7 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'keysGrid'
+  name: 'keysGrid',
+
 })
 export class KeysGridPipe implements PipeTransform {
 
@@ -20,6 +21,7 @@ export class KeysGridPipe implements PipeTransform {
 
       }
       sub_array.push(value[key]);
+
 
     }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as jmoment from 'jalali-moment';
+// import {jDate} from "jalali-moment";
 
-declare var google: any;
 
 @Component({
   selector: 'app-maps',
@@ -9,26 +10,45 @@ declare var google: any;
 })
 export class MapsComponent implements OnInit {
 
-  constructor() { }
+
+  rec_date: string;
+  gDate: string;
+  jDate: string;
+  jAddedDate: string;
+
+  constructor() {
+  }
+
 
   ngOnInit() {
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
-    var mapOptions = {
-      zoom: 13,
-      center: myLatlng,
-      scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-      styles: [{"featureType":"water","stylers":[{"saturation":43},{"lightness":-11},{"hue":"#0088ff"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"hue":"#ff0000"},{"saturation":-100},{"lightness":99}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#808080"},{"lightness":54}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ece2d9"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#ccdca1"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#767676"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#b8cb93"}]},{"featureType":"poi.park","stylers":[{"visibility":"on"}]},{"featureType":"poi.sports_complex","stylers":[{"visibility":"on"}]},{"featureType":"poi.medical","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","stylers":[{"visibility":"simplified"}]}]
 
-    }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        title:"Hello World!"
-    });
+    console.log(jmoment());
 
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
   }
+
+  private update(event) {
+
+    this.rec_date = event;
+
+    let input_date_moment = jmoment(this.rec_date);
+    this.gDate = input_date_moment.format('YYYY-MM-DD');
+    this.jDate = input_date_moment.format('jYYYY-jMM-jDD');
+
+
+    let month = Number.parseInt(input_date_moment.format('jMM'));
+    let year = Number.parseInt(input_date_moment.format('jYYYY'));
+
+
+    let newYear =  year + ((month + 21) / 12);
+
+    let temp_month =  month + ( (month + 21) % 12 );
+
+    let newMonth = temp_month > 12 ? temp_month % 12 : temp_month;
+
+    this.jAddedDate = newYear + '/' + newMonth;
+
+  }
+
 
 }

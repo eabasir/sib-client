@@ -18,8 +18,65 @@ body{
   font-family: 'Yekan' !important;
 
 }
-h1,h2,h3,h4,h5,h6{
+
+h1,h2,h3,h4,h5,h6 ,input, button, label, textarea, .mat-option , .mat-tab-label{
   font-family: 'Yekan' !important;
   text-align: right;
 
 }
+
+.mat-option , .mat-tab-label{
+  font-family: 'Yekan';
+  text-align: right;
+
+
+}
+md-select{
+  font-family: 'Yekan' !important;
+  text-align: right !important;
+
+
+}
+
+.mat-select-value{
+  left: auto !important;
+}
+div .date{
+  direction: ltr;
+
+}
+.form-group label{
+
+  left:0;
+}
+.dp-material .dp-calendar-month{
+  font-size: 14px !important;
+}
+.dp-calendar-day{
+  text-align: center !important;
+}
+.mat-select-arrow, .mat-select-disabled .mat-select-value, .mat-select-trigger{
+  color: #737373;
+}
+
+table {
+  font-family: 'Yekan' !important;
+  text-align: right;
+}
+th{
+  color: #125688!important;
+}
+
+
+.ui-datatable .ui-paginator{
+  direction: ltr;
+
+}
+
+body .ui-datatable .ui-datatable-header, body .ui-datatable .ui-datatable-footer{
+
+  font-family: 'Yekan' !important;
+  text-align: right;
+}
+
+

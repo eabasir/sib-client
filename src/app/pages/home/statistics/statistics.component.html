@@ -1,0 +1,74 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="dblue">
+            <h4 class="title">نتایج</h4>
+            <p class="category">نتایج جستجو بر اساس موارد انتخاب شده </p>
+          </div>
+          <div class="card-content table-responsive">
+
+            <p-dataTable [value]="info" [lazy]="true" [rows]="10" [paginator]="true"
+                         [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)">
+              <!--<p-header>لیست افراد</p-header>-->
+              <p-column field="{{_names.firstName}}" header="{{_names.firstName}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.surname}}" header="{{_names.surname}}" [filter]="true" filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.father_name}}" header="{{_names.father_name}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.national_code}}" header="{{_names.national_code}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+
+              <p-column field="{{_names.dispatch_date}}" header="{{_names.dispatch_date}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.real_discharge_date}}" header="{{_names.real_discharge_date}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.serve_place}}" header="{{_names.serve_place}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.serve_place_part}}" header="{{_names.serve_place_part}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.education_major}}" header="{{_names.education_major}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+              <p-column field="{{_names.education_sub_major}}" header="{{_names.education_sub_major}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.education}}" header="{{_names.education}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+              <p-column field="{{_names.serve_status}}" header="{{_names.serve_status}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+
+              <p-column field="{{_names.marriage_status}}" header="{{_names.marriage_status}}" [filter]="true"
+                        filterPlaceholder="جستجو"
+                        [sortable]="true"></p-column>
+            </p-dataTable>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

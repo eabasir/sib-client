@@ -1,0 +1,105 @@
+<div *ngIf="input_item">
+  <div class="row">
+    <div class="col-md-12">
+      <p style="direction: ltr"><b>{{input_item.name }}</b></p>
+      <p style="direction: ltr"><b> {{ created_at | jalali }}</b></p>
+      <p><b>{{personnel_full_name}}</b></p>
+
+      <hr/>
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-12" style="text-align: center">
+      <button *ngFor="let button of buttons" type="submit" class="btn btn-instagram btn-round"
+              (click)="addByTag(button)">
+        {{button}}
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6" *ngFor="let item of info">
+
+      <div [ngSwitch]="item.key">
+
+        <div *ngSwitchCase="_names.delivery_date" class="form-group form-black label-floating">
+
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px;">{{item.key}}</span>
+            <br/><br/>
+            <app-date [input_date]="item.value" (output_date)="item.value = $event;"></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" (click)="delete(item)" mdTooltip="حذف">delete</i>
+        </div>
+
+        <div *ngSwitchCase="_names.doc_date" class="form-group form-black label-floating">
+
+          <div style="margin-bottom: 10px;">
+            <span style="margin-left: 5px; font-size: 18px;">{{item.key}}</span>
+            <br/><br/>
+            <app-date [input_date]="item.value" (output_date)="item.value = $event;"></app-date>
+          </div>
+          <i class="material-icons" style="cursor: pointer;" (click)="delete(item)" mdTooltip="حذف">delete</i>
+        </div>
+
+        <div *ngSwitchDefault class="form-group form-black label-floating">
+          <label class="control-label">{{item.key}}</label>
+          <input class="form-control" [(ngModel)]="item.value"
+                 [(value)]="item.value" type="text">
+
+          <i class="material-icons" style="cursor: pointer;" (click)="delete(item)" mdTooltip="حذف">delete</i>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="card" style="background-color: rgba(174, 222, 255, 0.65)">
+
+      <div class="col-md-3">
+        <div class="form-group form-black label-floating is-empty">
+          <label class="control-label">کلید جدید</label>
+          <input type="text" class="form-control" [(ngModel)]="newKey">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-group">
+          <div class="form-group form-black label-floating is-empty">
+            <label class="control-label"> مقدار جدید</label>
+            <textarea class="form-control" rows="1" [(ngModel)]="newValue"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+
+          <button type="submit" class="btn btn-instagram btn-round btn-just-icon" style="margin-right: 10px;"
+                  (click)="add()">
+            <i class="large material-icons" style="font-weight: bold">add</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <button  class="btn btn-success" (click)="save()" type="button">
+    <span  class="fa fa-save"></span>ثبت تغییرات
+  </button>
+  <div class="clearfix"></div>
+</div>

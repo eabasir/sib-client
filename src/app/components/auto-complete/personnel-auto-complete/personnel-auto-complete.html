@@ -1,0 +1,20 @@
+<div class="form-group form-newsletter label-floating is-empty" style="float: right; width: 300px;">
+  <label class="control-label">جستجو</label>
+  <input type="text" class="form-control" [mdAutocomplete]="auto"  [formControl]="searchModelCtrl" #autoNameCode>
+</div>
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let item of search_items" (onSelectionChange)="selected_item = item"
+             [value]="item[_names.firstName] + ' ' + item[_names.surname] + ' - ' + item[_names.national_code]">
+    {{ item[_names.firstName] + ' ' + item[_names.surname] + ' - ' + item[_names.national_code]}}
+  </md-option>
+</md-autocomplete>
+
+<button type="submit" class="btn btn-success btn-round btn-just-icon" style="margin-right: 30px;" (click)="search()">
+  <i class="material-icons">search</i>
+  <div class="ripple-container"></div>
+</button>
+
+<button  type="submit" class="btn btn-instagram btn-round btn-just-icon" style="margin-right: 30px;" (click)="removeSearchResult() ">
+  <i class="material-icons">delete</i>
+  <div class="ripple-container"></div>
+</button>

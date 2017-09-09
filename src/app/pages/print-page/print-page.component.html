@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-sm-12" style="text-align: center">
+
+    بسمه تعالی
+
+  </div>
+  <div class="col-sm-12" style="text-align: center">
+
+    آخرین کارکرد و فرم خلاصه وضعیت خدمت کارکنان وظیفه صاایران
+
+  </div>
+
+
+</div>
+
+<div class="row">
+
+  <div class="right col-sm-6">
+
+    <table>
+      <tr *ngFor="let item of info | cats : _categoty.Personal">
+        <td *ngIf="item.value" style="padding: 10px; font-weight: bold"> {{item.key}}</td>
+        <td *ngIf="item.value" style="padding: 10px;"> {{item.value | jalali}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="left col-sm-6">
+    <div class="row">
+      <div class="col-p-12">
+
+        <img src="../../../assets/img/pic.png" style="height: 4cm; width: 3cm" class="pull-left"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-p-12">
+
+        <table>
+          <tr *ngFor="let item of info | cats : _categoty.Service">
+            <td *ngIf="item.value" style="padding: 10px; font-weight: bold"> {{item.key}}</td>
+            <td *ngIf="item.value" style="padding: 10px;"> {{item.value | jalali}}</td>
+          </tr>
+        </table>
+
+
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
+
+<div class="row">
+  <div class="col-p-12" style="text-align: center">
+
+    <b>مدیریت دبیرخامه و امور وظیفه صاایران</b>
+    <br/>
+    <b>ررضا حسنلو</b>
+  </div>
+
+
+</div>
