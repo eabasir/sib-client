@@ -3,6 +3,7 @@ import {MODEL_NAMES} from "../../../names/Const";
 import {RestService} from "../../../services/rest.service";
 import '../../../../assets/js/demo.js'
 import {LazyLoadEvent} from 'primeng/primeng';
+
 declare var demo: any;
 import * as jmoment from 'jalali-moment';
 
@@ -30,19 +31,23 @@ export class StatisticsComponent implements OnInit, AfterViewChecked {
 
   }
 
+  body: any = {};
+
   ngAfterViewChecked(): void {
     this.cdRef.detectChanges();
   }
 
-  private search(dataTableQuery) {
 
-    let body: any = {};
+  loadCarsLazy(dataTableQuery: LazyLoadEvent) {
 
+    this.body = dataTableQuery;
+    this.search();
 
-    body = dataTableQuery;
+  }
 
+  private search() {
 
-    this.restService.post('statistics/query', body).subscribe(res => {
+    this.restService.post('statistics/query', this.body).subscribe(res => {
 
 
         if (res.error || (res.error_code && res.error_code !== 0)) {
@@ -68,9 +73,22 @@ export class StatisticsComponent implements OnInit, AfterViewChecked {
 
   }
 
-  loadCarsLazy(dataTableQuery: LazyLoadEvent) {
 
-      this.search(dataTableQuery);
+  export() {
+
+    this.restService.post('exports/soldier-table', this.body).subscribe(res => {
+
+        console.log(res);
+        if (res.error || (res.error_code && res.error_code !== 0)) {
+          demo.showNotification('bottom', 'center', 4, 'خطا در دریافت اطلاعات');
+          return;
+        }
+        window.open(res, "_blank");
+      },
+      err => {
+        console.log(err);
+
+      });
 
   }
 

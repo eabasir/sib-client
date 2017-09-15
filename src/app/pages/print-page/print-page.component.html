@@ -15,42 +15,165 @@
 
 <div class="row">
 
-  <div class="right col-sm-6">
+  <div class="right col-sm-12">
 
-    <table>
-      <tr *ngFor="let item of info | cats : _categoty.Personal">
-        <td *ngIf="item.value" style="padding: 10px; font-weight: bold"> {{item.key}}</td>
-        <td *ngIf="item.value" style="padding: 10px;"> {{item.value | jalali}}</td>
+    <table id="main">
+      <!--Personal Info -->
+      <tr>
+        <td colspan="2" class="section">اطلاعات شخصی</td>
       </tr>
+
+      <tr>
+        <td class="Col">
+          <table class="innerTable">
+
+            <tr *ngIf="data[_names.firstName]">
+              <td><span class="title"> {{_names.firstName}}:</span> <span>{{data[_names.firstName]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.surname]">
+              <td><span class="title"> {{_names.surname}}:</span> <span>{{data[_names.surname]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.national_code]">
+              <td><span class="title"> {{_names.national_code}}:</span> <span>{{data[_names.national_code]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.father_name]">
+              <td><span class="title"> {{_names.father_name}}:</span> <span>{{data[_names.father_name]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.passport_number]">
+              <td><span class="title"> {{_names.passport_number}}:</span> <span>{{data[_names.passport_number]}}</span>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+        <td class="Col">
+
+          <table class="innerTable">
+
+            <tr *ngIf="data[_names.dob]">
+              <td><span class="title"> {{_names.dob}}:</span> <span>{{data[_names.dob]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.birth_place]">
+              <td><span class="title"> {{_names.birth_place}}:</span> <span>{{data[_names.birth_place]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.phone]">
+              <td><span class="title"> {{_names.phone}}:</span> <span>{{data[_names.phone]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.mobile_phone]">
+              <td><span class="title"> {{_names.mobile_phone}}:</span> <span>{{data[_names.mobile_phone]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.marriage_status]">
+              <td><span class="title"> {{_names.marriage_status}}:</span> <span>{{data[_names.marriage_status]}}</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+
+      <tr *ngIf="data[_names.address]">
+        <td colspan="2" style="padding: 10px"><span class="title">{{_names.address}}: </span>
+          <p>{{data[_names.address]}}</p></td>
+      </tr>
+
+
+      <!--Educational Info -->
+      <tr>
+        <td colspan="2" class="section">اطلاعات تحصیلی</td>
+      </tr>
+
+
+      <tr>
+        <td class="Col">
+          <table class="innerTable">
+
+            <tr *ngIf="data[_names.education]">
+              <td><span class="title"> {{_names.education}}:</span> <span>{{data[_names.education]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.university]">
+              <td><span class="title"> {{_names.university}}:</span> <span>{{data[_names.university]}}</span></td>
+            </tr>
+
+          </table>
+        </td>
+        <td class="Col">
+
+          <table class="innerTable">
+
+            <tr *ngIf="data[_names.education_major]">
+              <td><span class="title"> {{_names.education_major}}:</span> <span>{{data[_names.education_major]}}</span>
+              </td>
+            </tr>
+            <tr *ngIf="data[_names.education_sub_major]">
+              <td><span class="title"> {{_names.education_sub_major}}:</span>
+                <span>{{data[_names.education_sub_major]}}</span></td>
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+
+      <!--Serve Info -->
+      <tr>
+        <td colspan="2" class="section">اطلاعات خدمتی</td>
+      </tr>
+
+
+      <tr>
+        <td class="Col">
+          <table class="innerTable">
+
+            <tr *ngIf="data[_names.dispatch_date]">
+              <td><span class="title"> {{_names.dispatch_date}}:</span> <span>{{data[_names.dispatch_date] | jalali}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.legal_discharge_date]">
+              <td><span class="title"> {{_names.legal_discharge_date}}:</span> <span>{{data[_names.legal_discharge_date] | jalali}}</span>
+              </td>
+            </tr>
+            <tr *ngIf="data[_names.real_discharge_date]">
+              <td><span class="title"> {{_names.real_discharge_date}}:</span>
+                <span>{{data[_names.real_discharge_date] | jalali}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.serve_place]">
+              <td><span class="title"> {{_names.serve_place}}:</span> <span>{{data[_names.serve_place]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.serve_place_part]">
+              <td><span class="title"> {{_names.serve_place_part}}:</span>
+                <span>{{data[_names.serve_place_part]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.degree]">
+              <td><span class="title"> {{_names.degree}}:</span><span>{{data[_names.degree]}}</span></td>
+            </tr>
+          </table>
+        </td>
+        <td class="Col">
+
+          <table class="innerTable">
+            <tr *ngIf="data[_names.serve_reduction]">
+              <td><span class="title"> {{_names.serve_reduction}}:</span> <span>{{data[_names.serve_reduction]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.leave_incentive]">
+              <td><span class="title"> {{_names.leave_incentive}}:</span> <span>{{data[_names.leave_incentive]}}</span>
+              </td>
+            </tr>
+            <tr *ngIf="data[_names.service_penalty]">
+              <td><span class="title"> {{_names.service_penalty}}:</span>
+                <span>{{data[_names.service_penalty]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.remainder_leave]">
+              <td><span class="title"> {{_names.remainder_leave}}:</span> <span>{{data[_names.remainder_leave]}}</span></td>
+            </tr>
+            <tr *ngIf="data[_names.serve_status]">
+              <td><span class="title"> {{_names.serve_status}}:</span>
+                <span>{{data[_names.serve_status]}}</span></td>
+            </tr>
+
+          </table>
+        </td>
+
+      </tr>
+
     </table>
-
-  </div>
-
-  <div class="left col-sm-6">
-    <div class="row">
-      <div class="col-p-12">
-
-        <img src="../../../assets/img/pic.png" style="height: 4cm; width: 3cm" class="pull-left"/>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-p-12">
-
-        <table>
-          <tr *ngFor="let item of info | cats : _categoty.Service">
-            <td *ngIf="item.value" style="padding: 10px; font-weight: bold"> {{item.key}}</td>
-            <td *ngIf="item.value" style="padding: 10px;"> {{item.value | jalali}}</td>
-          </tr>
-        </table>
-
-
-      </div>
-
-
-    </div>
-
-
 
   </div>
 

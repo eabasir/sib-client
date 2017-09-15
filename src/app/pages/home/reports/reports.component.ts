@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RestService} from "../../../services/rest.service";
 import {MODEL_NAMES} from "../../../names/Const";
 
+declare var demo: any;
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -78,5 +79,20 @@ export class ReportsComponent implements OnInit {
 
   }
 
+  export(){
+    this.restService.get('exports/reports').subscribe(res => {
+
+        console.log(res);
+        if (res.error || (res.error_code && res.error_code !== 0)) {
+          demo.showNotification('bottom', 'center', 4, 'خطا در دریافت اطلاعات');
+          return;
+        }
+        window.open(res, "_blank");
+      },
+      err => {
+        console.log(err);
+
+      });
+  }
 
 }

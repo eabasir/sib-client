@@ -1,3 +1,67 @@
 @import "../../../assets/bootstrap-print/css/rtl/bootstrap-print-rtl.css";
 @import "../../../assets/bootstrap-print/css/rtl/bootstrap-print-rtl-sm.css";
 
+@media print {
+  @page
+  {
+    size:  auto ;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+  }
+
+  html
+  {
+    background-color: #FFFFFF;
+    margin: 0px;  /* this affects the margin on the html before sending to printer */
+  }
+
+  body
+  {
+    border: solid 1px blue ;
+    margin: 10mm 15mm 10mm 15mm; /* margin you want for the content */
+  }
+
+  td.section{
+    background-color: #c3c3c3 !important;
+    -webkit-print-color-adjust: exact;
+
+  }
+
+}
+
+
+table{
+
+  width: 100%;
+}
+#main{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border:2px solid black;
+}
+
+table.innerTable td{
+
+  padding: 5px 10px 5px 10px;
+
+}
+
+span.title{
+
+  font-weight: bold;
+margin-left: 10px;
+}
+
+td.section{
+
+  font-weight: bold ;
+  background-color: #c3c3c3;
+  text-align: center;
+  border: 2px solid black !important;
+}
+
+td.Col {
+  vertical-align: top;
+}
+
+
+
