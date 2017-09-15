@@ -1,0 +1,58 @@
+<div class="main-content">
+
+  <div class="container-fluid">
+    <div class="row">
+
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="orange">
+            آمار تفیکی سرباز ها در شرکت ها
+          </div>
+          <div class="card-content">
+            <canvas baseChart height="50"
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                   ></canvas>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" data-background-color="green">
+            درصد تعداد سربازان در شرکت ها
+          </div>
+          <div class="card-content">
+            <canvas baseChart
+                    [data]="polarDiscreteCountData"
+                    [labels]="polarDiscreteCountLabels"
+                    [legend]="polarLegend"
+                    [chartType]="polarType"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" data-background-color="purple">
+            درصد سربازان بر اساس مدرک تحصیلی
+          </div>
+          <div class="card-content">
+            <canvas baseChart
+                    [data]="polarDiscreteELData"
+                    [labels]="polarDiscreteELLabels"
+                    [legend]="polarLegend"
+                    [chartType]="polarType"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

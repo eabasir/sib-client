@@ -11,6 +11,7 @@ import {MapsComponent} from './maps/maps.component';
 import {AboutComponent} from './about/about.component';
 import {DocumentComponent} from "./document/document.component";
 import {ReportsComponent} from "./reports/reports.component";
+import {ChartsComponent} from "./charts/charts.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       {path: 'test', component: MapsComponent},
       {path: 'about', component: AboutComponent},
       {path: 'reports', component: ReportsComponent},
+      {path: 'charts', component: ChartsComponent},
     ]
   }
 ];

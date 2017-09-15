@@ -298,7 +298,7 @@ export class SoldierInfoFormComponent implements OnInit, OnChanges, AfterViewChe
 
       this.info.forEach(x => {
 
-        if (x.key === this._names.legal_discharge_date) {
+        if (x.key === this._names.legal_discharge_date || x.key === this._names.real_discharge_date) {
           x.value = dischargeDate;
         }
 

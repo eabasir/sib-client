@@ -18,6 +18,9 @@ import {DpDatePickerModule} from "ng2-jalali-date-picker";
 import {PipesModule} from "../../pipes/pipes.module";
 import {DataTableModule} from 'primeng/primeng';
 import { ReportsComponent } from './reports/reports.component';
+import { ChartsComponent } from './charts/charts.component';
+import {ChartsModule} from 'ng2-charts';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { ReportsComponent } from './reports/reports.component';
     DpDatePickerModule,
     FormsModule,
     PipesModule,
-    DataTableModule
+    DataTableModule,
+    ChartsModule
   ],
   declarations: [
     HomeComponent,
@@ -42,6 +46,7 @@ import { ReportsComponent } from './reports/reports.component';
     AboutComponent,
     DocumentComponent,
     ReportsComponent,
+    ChartsComponent,
   ],
   providers: [
   ],

@@ -64,7 +64,7 @@ export class ReportsComponent implements OnInit {
 
   }
 
-  private getTotal(value){
+  private getTotalofEachCompany(value){
 
     let phd = Number.parseInt(value[MODEL_NAMES.phd]);
     let msc = Number.parseInt(value[MODEL_NAMES.Msc]);

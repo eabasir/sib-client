@@ -30,9 +30,9 @@ export class DateComponent implements OnInit, AfterViewInit, OnChanges {
   days: string[] = [];
 
 
-  selectedDay: string;
+  selectedDay: string ;
   selectedMonth: string;
-  selectedYear: string;
+  selectedYear: string = jmoment().format('jYYYY');
 
   /**
    * input date is always in utc mode
@@ -89,23 +89,14 @@ export class DateComponent implements OnInit, AfterViewInit, OnChanges {
 
       let gOutput = jmoment(this.selectedYear + '-' + this.selectedMonth + '-' + this.selectedDay, 'jYYYY-jM-jD').format('YYYY-M-D');
 
-      let output_utc = jmoment.utc(gOutput).add(1, 'days').format(); // 1 day is added to for containing current day
+      // let output_utc = jmoment.utc(gOutput).add(1, 'days').format(); // 1 day is added to for containing current day
+      let output_utc = jmoment.utc(gOutput).format(); // 1 day is added to for containing current day
 
       this.output_date.emit(output_utc);
 
     }
   }
 
-  private isCurrentYear(value){
-
-    let currentYear = jmoment().format('jYYYY');
-    if (value === currentYear)
-      return true;
-    else
-      return false;
-
-
-  }
 
 
 }
