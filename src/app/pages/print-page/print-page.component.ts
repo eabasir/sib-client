@@ -123,10 +123,10 @@ export class PrintPageComponent implements OnInit {
 
       console.log(this.info);
 
-      // setTimeout(() => {
-      //
-      //   window.print();
-      // }, 1000);
+      setTimeout(() => {
+
+        window.print();
+      }, 1000);
     });
 
 

@@ -1,3 +1,71 @@
-<p>
-  login works!
-</p>
+<!--
+    Login template using Angular Material
+    @author Shashank Tiwari
+-->
+
+<!-- Application header starts -->
+<div class="app-header">
+  <h1 class="app-heading">سیب</h1>
+</div>
+<!-- Application header ends -->
+
+<md-grid-list cols="3" >
+  <md-grid-tile></md-grid-tile>
+
+  <!-- Writing markup for login starts -->
+  <md-grid-tile class='login-element'>
+    <div class="login-container" >
+
+      <form (keydown)="keyDownFunction($event)">
+
+      <!-- Template Header starts -->
+      <div class="login-box-header">
+        <p>ورود به سامانه</p>
+      </div>
+      <!-- Template Header ends -->
+
+      <!-- Template Body starts -->
+      <div class="login-box-body">
+
+        <!-- Markup for getting Username starts -->
+        <md-grid-list cols="9" rowHeight="75px">
+          <md-grid-tile [rowspan]="1" class="login-icon">
+            <md-icon>lock</md-icon>
+          </md-grid-tile>
+          <md-grid-tile [colspan]="7">
+            <md-input-container class="justifier">
+              <input mdInput [(ngModel)]="username" name="username"   placeholder="نام کاربری" >
+            </md-input-container>
+          </md-grid-tile>
+        </md-grid-list>
+        <!-- Markup for getting Username ends -->
+
+        <!-- Markup for getting Password starts -->
+        <md-grid-list cols="9" rowHeight="100px">
+          <md-grid-tile [rowspan]="1"  class="login-icon">
+            <md-icon>remove_red_eye</md-icon>
+          </md-grid-tile>
+          <md-grid-tile [colspan]="7">
+            <md-input-container class="justifier">
+              <input mdInput [(ngModel)]="password" name="password" placeholder="رمز عبور" >
+            </md-input-container>
+          </md-grid-tile>
+        </md-grid-list>
+        <!-- Markup for getting Password ends -->
+
+        <button type="button" (click)="login()"  md-raised-button class="login-button">
+          <md-icon>input</md-icon> ورود
+        </button>
+
+      </div>
+
+     <!-- Template Body ends -->
+      </form>
+
+    </div>
+  </md-grid-tile>
+
+  <!-- Writing markup for login ends -->
+  <md-grid-tile></md-grid-tile>
+
+</md-grid-list>

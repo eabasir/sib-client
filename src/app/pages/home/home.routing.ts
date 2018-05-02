@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {Routes, RouterModule} from '@angular/router';
 
@@ -12,20 +12,22 @@ import {AboutComponent} from './about/about.component';
 import {DocumentComponent} from "./document/document.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {ChartsComponent} from "./charts/charts.component";
+import {AuthGuard} from '../../guards/auth.guard';
 
 
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'user-profile', component: UserProfileComponent},
-      {path: 'document', component: DocumentComponent},
-      {path: 'statistics', component: StatisticsComponent},
-      {path: 'test', component: MapsComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'reports', component: ReportsComponent},
-      {path: 'charts', component: ChartsComponent},
+      {path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard]},
+      {path: 'user-profile', component: UserProfileComponent,canActivate: [AuthGuard]},
+      {path: 'document', component: DocumentComponent,canActivate: [AuthGuard]},
+      {path: 'statistics', component: StatisticsComponent,canActivate: [AuthGuard]},
+      {path: 'test', component: MapsComponent,canActivate: [AuthGuard]},
+      {path: 'about', component: AboutComponent,canActivate: [AuthGuard]},
+      {path: 'reports', component: ReportsComponent,canActivate: [AuthGuard]},
+      {path: 'charts', component: ChartsComponent,canActivate: [AuthGuard]},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     ]
   }
 ];
@@ -37,7 +39,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   exports: [
     RouterModule

@@ -15,7 +15,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {UploaderComponent} from "./uploader/uploader.component";
 import {FileUploadModule} from "ng2-file-upload";
 import {MaterialModule} from "@angular/material";
-import {RestService} from "../services/rest.service";
 import { PersonnelAutoCompleteComponent } from './auto-complete/personnel-auto-complete/personnel-auto-complete';
 import { ViewerComponent } from './viewer/viewer.component';
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
@@ -61,7 +60,7 @@ import {PipesModule} from "../pipes/pipes.module";
     DateComponent,
   ],
   providers: [
-    RestService,
+
   ],
   exports: [
     FooterComponent,

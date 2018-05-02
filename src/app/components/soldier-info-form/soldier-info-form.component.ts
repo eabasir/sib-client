@@ -48,7 +48,7 @@ export class SoldierInfoFormComponent implements OnInit, OnChanges, AfterViewChe
   }
 
 
-  constructor(public dialog: MdDialog, private restService: RestService, private cdRef: ChangeDetectorRef, private router: Router) {
+  constructor(public dialog: MdDialog, private cdRef: ChangeDetectorRef, private router: Router) {
 
   }
 
